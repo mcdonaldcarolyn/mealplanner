@@ -1,4 +1,9 @@
-<h1>YOur Favorite Meals</h1>
+<h1>Your Favorite Meals</h1>
 <p></p>
-<% @meals%>
+<% @meals.each do |meal|%>
+  <li>
+    <%= link_to meal.title, meal_path(@meal)%>
+    </li>
+    
+    <% end %>
 <%= link_to "Make a new meal", new_meal_path(@meal) %>
