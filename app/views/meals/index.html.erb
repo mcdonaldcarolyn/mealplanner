@@ -3,7 +3,7 @@
 <% @meals.each do |meal|%>
   <li>
     <%= link_to meal.title, meal_path(@meal)%>
-    </li>
-    
+  </li>
+
     <% end %>
 <%= link_to "Make a new meal", new_meal_path(@meal) %>
