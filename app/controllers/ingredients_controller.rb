@@ -32,7 +32,7 @@ class IngredientsController < ApplicationController
     if @ingredient.save
       redirect_to ingredients_path
     else 
-      render :edit
+      render :new
     end
   end
   
