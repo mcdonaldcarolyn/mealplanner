@@ -1,0 +1,8 @@
+<h1> These are </h1>
+<% @ingredients.each do |ingredient| %>
+  <%=  ingredient.name %>
+  <% end %>
+  <br>
+<%= link_to "Create a recipe", new_ingredient_path(@ingredient)%>
+
+
