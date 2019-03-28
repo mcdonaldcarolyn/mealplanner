@@ -15,11 +15,9 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    if @ingredient.save
+    @ingredient.save
       redirect_to ingredients_path
-    else
-      render :new
-    end
+    
   end
 
   def edit 
@@ -32,7 +30,7 @@ class IngredientsController < ApplicationController
     if @ingredient.save
       redirect_to ingredients_path
     else 
-      render :new
+      render :edit
     end
   end
   
