@@ -2,8 +2,12 @@
 <p></p>
 <% @meals.each do |meal|%>
   <li>
-    <%= link_to meal.title, meal_path(@meal)%>
+    <%= link_to meal.title, meals_path(meal)%>
+
   </li>
 
+<%= link_to "Edit", edit_meal_path(meal) %>
     <% end %>
+    <br>
+    <br>
 <%= link_to "Make a new meal", new_meal_path(@meal) %>

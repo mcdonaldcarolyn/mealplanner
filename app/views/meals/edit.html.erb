@@ -1,0 +1,3 @@
+<edit your meals>
+<%= render  'form', :locals => {:meal => @meal} %>
+<%= link_to "Delete", meal_path(@meal), method: :delete, :confirm => "Are you sure you want to delete?"%>
