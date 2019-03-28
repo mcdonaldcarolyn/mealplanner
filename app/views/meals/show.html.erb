@@ -4,6 +4,7 @@
 <%= ingredient.name %>
 </div>
 <%= form_for @ingredient, url: '/ingredients' %>
+
 <input type="hidden" name="meal_id" value="<%=@meal.id%>">
 
 <% end %>
