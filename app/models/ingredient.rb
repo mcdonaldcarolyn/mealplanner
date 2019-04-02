@@ -1,6 +1,7 @@
 class Ingredient < ApplicationRecord
-  belongs_to :user
-  has_many :meals
-  
-  
+  has_many :meals_ingredients
+  has_many :meals, through: :meals_ingredients
+  validates :name, presence: true, uniqueness: true 
+
+
 end

@@ -6,8 +6,11 @@ class MealsController < ApplicationController
   end
   
   def show
+    @meals = Meal.all
     @meal = Meal.find(params[:id])
-    @ingredient = Ingredient.new
+    @ingredients = Ingredient.all
+    # @ingredient = Ingredient.find(params[:id])
+    @meals_ingredient = MealsIngredient.new
   end
 
   def new
@@ -16,7 +19,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
-    if @meal.save
+    if @meal.save!
       redirect_to meals_path
     else
       render :new
@@ -30,7 +33,7 @@ class MealsController < ApplicationController
   def update
     @meal = Meal.find(params[:id])
       @meal.update(meal_params)
-    if @meal.save
+    if @meal.save!
       redirect_to meals_path
     else 
       redirect_to meals_path
@@ -46,6 +49,6 @@ class MealsController < ApplicationController
 
 private 
   def meal_params
-    params.require(:meal).permit(:title)
+    params.require(:meal).permit(:title, ingredients:[], ingredients_attributes: [:name])
   end
 end

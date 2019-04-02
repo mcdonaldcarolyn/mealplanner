@@ -1,10 +1,36 @@
 <h1><%= @meal.title %></h1>
-<%= @meal.ingredient.each do |ingredient| %>
 <div>
-<%= ingredient.name %>
-</div>
-<%= form_for @ingredient, url: '/ingredients' %>
+<%# <% form_for @ingredients, url: ingredient_path do |ingredient| %> 
+<%# has<%= ingredient.name%> 
+<%# <% end%> 
+<div>
 
-<input type="hidden" name="meal_id" value="<%= @meal.id %>">
-<% end %>
+<h2>Ingredients</h2>
 
+<% @meal.ingredients.each do |ingredient|%>
+  <li><%= ingredient.name %></li>
+<% end%>
+
+<br>
+<%= link_to "back to meals", meals_path(@meal)%>
+<hr>
+<br>
+
+<h3>Add another ingredient</h3>
+
+
+
+
+<%= form_for @meals_ingredient do |f|%> 
+  <%= f.hidden_field :meal_id, :value => @meal.id %>
+  pick <%= f.collection_select :ingredient_id, @ingredients, :id, :name %> 
+    
+  or add
+
+  <%= f.fields_for :ingredients, @meal.ingredients.build do |ingredients_fields| %>
+    <%= ingredients_fields.text_field :name %>
+  <% end %>
+  <%= f.submit %>
+<% end %> 
+ <%= link_to "Edit Ingredients", edit_ingredient_path(@ingredients)%>
+  <br>
