@@ -10,9 +10,9 @@ class Meal < ApplicationRecord
     end
   end
 
-  def self.meat_less 
-    where("ingredients.exclude(ingredient => "chicken", "steak", "beef", "pork")")
+  # def self.meat_less 
+    # where("ingredients.exclude(ingredient => "chicken", "steak", "beef", "pork")")
   
-  end
+  # end
 
 end
