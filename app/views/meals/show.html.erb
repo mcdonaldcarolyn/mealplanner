@@ -8,7 +8,11 @@
 <h2>Ingredients</h2>
 
 <% @meal.ingredients.each do |ingredient|%>
-  <li><%= ingredient.name %></li>
+  <% mi = @meal.meals_ingredients.find { |mi| mi.ingredient_id == ingredient.id } %>
+  <li><%= ingredient.name %>
+  <%= link_to "Delete", meals_ingredient_path(mi), method: :delete %>
+  </li>
+  
 <% end%>
 
 <br>
@@ -26,8 +30,8 @@
   pick <%= f.collection_select :ingredient_id, @ingredients, :id, :name %> 
     
   or add
-
-  <%= f.fields_for :ingredients, @meal.ingredients.build do |ingredients_fields| %>
+  <%= f.fields_for :ingredients, @meals_ingredient.ingredient do |ingredients_fields| %>
+  
     <%= ingredients_fields.text_field :name %>
   <% end %>
   <%= f.submit %>
