@@ -6,6 +6,7 @@ class IngredientsController < ApplicationController
   
   def show
     @ingredient = Ingredient.find(params[:id])
+    @meals_ingredients = MealsIngredient.all
     # @meal = Meal.find(params[:id])
   end
 

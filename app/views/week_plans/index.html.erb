@@ -1,0 +1,10 @@
+<h2>Weekly Mealplan</h2>
+
+<% @weekly_meals.each do |weekly_meal| %>
+  <%= weekly_meal[:day] %>
+<% end %>
+
+<%= @meals.each do |meal|%>
+Monday:
+<%= meal.sample.title %>
+<% end %>

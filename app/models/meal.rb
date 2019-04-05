@@ -15,4 +15,7 @@ class Meal < ApplicationRecord
   
   # end
 
+  def self.random
+    self.sample.title
+  end
 end
