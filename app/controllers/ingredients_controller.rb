@@ -1,7 +1,14 @@
 class IngredientsController < ApplicationController
 
   def index
-    @ingredients = Ingredient.all
+   
+    if params[:meal_id]
+      @meal = Meal.find(params[:meal_id])
+      @ingredients = @meal.ingredients
+      render :show
+    else 
+      @ingredients = Ingredient.all
+    end
   end
   
   def show
