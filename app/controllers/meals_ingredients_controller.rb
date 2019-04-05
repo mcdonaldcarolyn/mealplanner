@@ -6,6 +6,12 @@ class MealsIngredientsController < ApplicationController
   
    redirect_to meal_path(meal_ingredient.meal)
   end 
+
+  def show
+    @meal = Meal.find_by(params[:meal_id])
+    @meals_ingredient = MealsIngredient.find(params[:id])
+
+  end
   
   def destroy
     @meal_ingredient = MealsIngredient.find(params[:id])

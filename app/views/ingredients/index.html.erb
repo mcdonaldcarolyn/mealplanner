@@ -2,10 +2,11 @@
 <% @ingredients.each do |ingredient| %>
   <li>
   <%= ingredient.name %>
-  <%= link_to "Edit", edit_ingredient_path(ingredient) %>
+  
   </li>
   <% end %>
   <br>
-<%= link_to "Create a recipe", new_ingredient_path(@ingredient)%>
+  <%# <%= link_to "Edit", edit_meal_ingredient_path(@ingredient) %> %>
+<%# <%= link_to "Create a recipe", new_ingredient_path(@ingredient)%> 
 
 

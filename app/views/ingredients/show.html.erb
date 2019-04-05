@@ -1,2 +1,11 @@
-Here is your weekly shopping list 
-<h3><%= @meals_ingredients.ingredient.name %></h3>
+<% @meals each do |meal|%>
+<%= meal.name%>
+
+<% end %>
+<% @meal.ingredients.each do |ingredient|%>
+  <% mi = @meal.meals_ingredients.find { |mi| mi.ingredient_id == ingredient.id } %>
+  <li><%= ingredient.name %>
+  <%= link_to "Delete", meals_ingredient_path(mi), method: :delete %>
+  </li>
+  
+<% end%>
