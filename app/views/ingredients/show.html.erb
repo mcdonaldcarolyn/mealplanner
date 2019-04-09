@@ -4,9 +4,31 @@
 <% @ingredients.each do |ingredient|%>
   <% mi = @meal.meals_ingredients.find { |mi| mi.ingredient_id == ingredient.id } %>
   <li><%= ingredient.name %>
-  <%# <%= link_to "Delete", meals_ingredient_path(mi), method: :delete %> 
+   
+   <%= link_to "Delete", meal_ingredient_path(@meal, ingredient), method: :delete %> 
   </li>
   
 <% end%>
 <br>
 <%= link_to "back to Meal's List", meals_path(@meal) %>
+<h3>Add another ingredient</h3>
+
+
+<%# create partial for adding the edit form to the bottom if add ingredient is pushed. %>
+
+<%= form_for :meals_ingredient, url: "/meals_ingredients" do |f| %> 
+  <%= f.hidden_field :meal_id, :value => @meal.id %>
+  pick <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name %> 
+  <%= f.submit %>
+<% end %> 
+
+ or add
+
+<%= form_for @meal do |f| %>   
+  <%= f.fields_for :ingredients, @meal.ingredients.build do |ingredients_fields| %>
+    <%= ingredients_fields.text_field :name %>
+  <% end %>
+  <%= f.submit %>
+<% end %> 
+
+<%= link_to "Edit Ingredients", ingredients_path(@ingredients)%>

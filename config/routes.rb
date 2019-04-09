@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :meals do 
-    resources :ingredients, only: :index
+    resources :ingredients
   end
+  resources :ingredients
   resources  :week_plan, only: :index
   resources :meals_ingredients
   

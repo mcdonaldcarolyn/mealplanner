@@ -7,11 +7,11 @@
 
 <h2>Ingredients</h2>
 
-<% @meal.ingredients.each do |ingredient|%>
-  <% mi = @meal.meals_ingredients.find { |mi| mi.ingredient_id == ingredient.id } %>
+<% @meal.ingredients.each do |ingredient| %>
   <li><%= ingredient.name %>
-  <%= link_to "Delete", meals_ingredient_path(mi), method: :delete %>
+  <%= link_to "Delete", meal_ingredient_path(@meal, ingredient), method: :delete %>
   </li>
+  
   
 <% end%>
 

@@ -1,11 +1,10 @@
 <h1> Ingredient list </h1>
 <% @ingredients.each do |ingredient| %>
   <li>
-  <%= ingredient.name %>
-  
+  <%= ingredient.name %>  
   </li>
-  <% end %>
-  <br>
+<% end %>
+<br>
   <%# <%= link_to "Edit", edit_meal_ingredient_path(@ingredient) %> %>
 <%# <%= link_to "Create a recipe", new_ingredient_path(@ingredient)%> 
 

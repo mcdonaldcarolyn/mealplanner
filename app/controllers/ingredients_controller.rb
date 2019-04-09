@@ -1,7 +1,6 @@
 class IngredientsController < ApplicationController
 
   def index
-   
     if params[:meal_id]
       @meal = Meal.find(params[:meal_id])
       @ingredients = @meal.ingredients
@@ -24,7 +23,7 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save!
-      redirect_to ingredients_path
+      redirect_to meal_ingredients_path
     else
       render :new
     end
@@ -48,7 +47,7 @@ class IngredientsController < ApplicationController
   def destroy
     @ingredient = Ingredient.find(params[:id])
     @ingredient.destroy
-    redirect_to ingredients_path
+    redirect_to meals_path
   end
   
 
