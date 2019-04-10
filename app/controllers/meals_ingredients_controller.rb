@@ -9,7 +9,7 @@ class MealsIngredientsController < ApplicationController
       })
       redirect_to meal_ingredients_path(meal_ingredient.meal)
     else
-      ingredient = Ingredient.create({
+      ingredient = Ingredient.find_or_create_by({
         :name => meals_ingredient_params[:ingredient][:name]
       })
       meal_ingredient = MealsIngredient.create({
