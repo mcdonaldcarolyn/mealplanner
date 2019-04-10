@@ -4,6 +4,7 @@ class IngredientsController < ApplicationController
     if params[:meal_id]
       @meal = Meal.find(params[:meal_id])
       @ingredients = @meal.ingredients
+      @meals_ingredient = MealsIngredient.new
       render :show
     else 
       @ingredients = Ingredient.all
@@ -22,10 +23,10 @@ class IngredientsController < ApplicationController
 
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    if @ingredient.save!
+    if @ingredient.save
       redirect_to meal_ingredients_path
     else
-      render :new
+      render :new 
     end
   end
 
@@ -45,9 +46,16 @@ class IngredientsController < ApplicationController
   end
   
   def destroy
-    @ingredient = Ingredient.find(params[:id])
-    @ingredient.destroy
-    redirect_to meals_path(@meal)
+    ingredient = Ingredient.find(params[:id])
+    if params[:meal_id] 
+      meal = Meal.find(params[:meal_id])
+      
+      meal.ingredients.delete(ingredient)
+      redirect_to meal_ingredients_path(meal)
+    else
+      ingredient.destroy
+      redirect_to ingredients_path
+    end
   end
   
 

@@ -50,12 +50,4 @@ ActiveRecord::Schema.define(version: 5) do
     t.datetime "updated_at", null: false
   end
 
-  # create_table "scheduled_meals", force: :cascade do |t|
-  #   t.integer "user_id"
-  #   t.integer "meal_id"
-  #   t.datetime "scheduled_at", null: false
-  #   t.datetime "created_at", null: false
-  #   t.datetime "updated_at", null: false
-  # end
-
 end

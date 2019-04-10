@@ -19,7 +19,7 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new(meal_params)
-    if @meal.save!
+    if @meal.save
       redirect_to meals_path
     else
       render :new
@@ -33,7 +33,7 @@ class MealsController < ApplicationController
   def update
     @meal = Meal.find(params[:id])
       @meal.update(meal_params)
-    if @meal.save!
+    if @meal.save
       redirect_to meals_path
     else 
       redirect_to meals_path

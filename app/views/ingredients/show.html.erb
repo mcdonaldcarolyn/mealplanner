@@ -2,10 +2,12 @@
 <h3><%= @meal.title%></h3>
 
 <% @ingredients.each do |ingredient|%>
-  <% mi = @meal.meals_ingredients.find { |mi| mi.ingredient_id == ingredient.id } %>
-  <li><%= ingredient.name %>
-   
-   <%= link_to "Delete", meal_ingredient_path(@meal, ingredient), method: :delete %> 
+  <% mi = @meal.meals_ingredients.find { |mi| mi.ingredient_id == ingredient.id } %> 
+  <li><%= ingredient.name %> (<%= mi.amount %> units)
+
+    <%# mi = ingredient.find_meal_ingredient(@meal) %>
+  
+   <%= link_to "Remove", meal_ingredient_path(@meal, ingredient), method: :delete %> 
   </li>
   
 <% end%>
@@ -15,19 +17,29 @@
 
 
 <%# create partial for adding the edit form to the bottom if add ingredient is pushed. %>
-
-<%= form_for :meals_ingredient, url: "/meals_ingredients" do |f| %> 
+<%# <% if @ingredient.errors.any?%>
+    <%# <% @ingredient.errors.full_messages.each do |msg| %> 
+    <%# <%= msg%> 
+    <%# <% end%> 
+    <%# <% end %> 
+<%= form_for @meals_ingredient do |f| %> 
   <%= f.hidden_field :meal_id, :value => @meal.id %>
-  pick <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name %> 
-  <%= f.submit %>
-<% end %> 
+   pick <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { include_blank: '' } %> 
+<% if @ingredients.errors.any?%>
+    <% @ingredients.errors.full_messages.each do |msg|%>
+    <%= msg%>
+    <% end %>
+    <% end %>
+ 
+ or create
 
- or add
 
-<%= form_for @meal do |f| %>   
-  <%= f.fields_for :ingredients, @meal.ingredients.build do |ingredients_fields| %>
+  <%= f.fields_for @meals_ingredient.build_ingredient do |ingredients_fields| %>
     <%= ingredients_fields.text_field :name %>
   <% end %>
+  and add your amount:
+  <%= f.number_field :amount %>
+  
   <%= f.submit %>
 <% end %> 
 

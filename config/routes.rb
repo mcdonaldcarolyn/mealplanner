@@ -2,13 +2,17 @@ Rails.application.routes.draw do
   
   
   devise_for :users
-  resources :meals do 
-    resources :ingredients
+  get '/auth/facebook/callback' => 'sessions#create'
+  resources :meals, except: :show do 
+    resources :ingredients, only: [:index, :destroy]
   end
   resources :ingredients
-  resources  :week_plan, only: :index
+  
   resources :meals_ingredients
   
   root to: "meals#index"
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  # add in later
+  # resources  :week_plan, only: :index 
+ # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
