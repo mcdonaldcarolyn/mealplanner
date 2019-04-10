@@ -25,11 +25,7 @@
 <%= form_for @meals_ingredient do |f| %> 
   <%= f.hidden_field :meal_id, :value => @meal.id %>
    pick <%= f.collection_select :ingredient_id, Ingredient.all, :id, :name, { include_blank: '' } %> 
-<% if @ingredients.errors.any?%>
-    <% @ingredients.errors.full_messages.each do |msg|%>
-    <%= msg%>
-    <% end %>
-    <% end %>
+
  
  or create
 
