@@ -2,10 +2,10 @@
 
 Flatiron Rails Project- Mealplanner
 
-This app demonstrates use of basic Ruby on Rails, RESTful routes, nested routes, and Omniauth.
+This app demonstrates the use of basic Ruby on Rails, RESTful routes, nested routes, and Omniauth.
 
 ### Objectives
-To create a app to keep track of favorite meals to make meal planning easy. 
+To create an app to keep track of your favorite meals and to make meal planning easy. 
 
 ### Installation
 In your terminal, write the following commands: 
@@ -16,7 +16,7 @@ In your terminal, write the following commands:
 * `rake db:migrate`
 * add Facebook app id and key to allow omniauth to work 
 * Follow prompts on the Welcome page and start tracking tanks.
-####Contributing
+#### Contributing
 * Fork it!
 * Create your feature branch: git checkout -b my-new-feature
 * Commit your changes: git commit -am 'Add some feature'
